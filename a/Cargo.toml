@@ -3,6 +3,7 @@ name = "a"
 version = "0.1.0"
 edition = "2018"
 
-[features]
-test = []
-
+[lib]
+name = "a_library"
+path = "src/lib.rs"
+crate-type = [ "cdylib" ]
