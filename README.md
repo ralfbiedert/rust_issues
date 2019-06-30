@@ -47,8 +47,25 @@ main_loop() - after set 0x635feff240
 
 # Trying to Fix
 
-
 - Putting LockLatch on TLS technically works, but `Condvar` doesn't reset so can't be reused.
 - Have to replace condvar.
+- Hacked it with `AtomicBoolean` and hot loop, seems to work.
 
+
+# Other source of allocation
+
+- There is a 2nd source of allocation
+- Every once in a while (apparently every 32 invocations precisely):
+
+```
+"self.in_worker_cold(op)" -- Events: 1, Bytes: 752
+"self.in_worker_cold(op)" -- Events: 0, Bytes: 0
+...
+... 32 invocations later ...
+... 
+"self.in_worker_cold(op)" -- Events: 0, Bytes: 0
+"self.in_worker_cold(op)" -- Events: 1, Bytes: 752
+```
+ 
+ - Seems to come from `Registry::inject` ... `self.injected_jobs.push(job_ref)`, which is `SegQueue::push`
  
