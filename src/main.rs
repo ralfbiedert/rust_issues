@@ -1,3 +1,5 @@
+use achtung_allocation::measure;
+use crossbeam_queue::SegQueue;
 use rayon::ThreadPoolBuilder;
 use std::thread::sleep;
 use std::time::Duration;
@@ -12,18 +14,21 @@ pub fn main() {
         pool.install(|| {});
         pool.install(|| {});
 
-        //        println!("Waiting 1 second");
-        sleep(Duration::new(1, 0));
+        for i in 0..100 {
+            pool.install(|| {})
+        }
 
         for i in 0..100 {
             pool.install(|| {})
         }
 
-        //        println!("Waiting 1 second");
-        sleep(Duration::new(1, 0));
+        let x: SegQueue<u32> = SegQueue::new();
 
         for i in 0..100 {
-            pool.install(|| {})
+            //            measure("push_pop", || {
+            x.push(1);
+            x.pop();
+            //            });
         }
     }
 }
