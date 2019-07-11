@@ -1,17 +1,15 @@
 
 # Background
 
-We have a Rust project `dylib` where we want to produce a shared library (`.dll`, `.dylib`, `.so`) for various 
-platforms. 
+We have a Rust project `dylib` where we want to produce a shared library (.dll, .dylib, .so) for various 
+platforms. As part of the build process we also want to verify the provided headers match the library. 
 
-As part of the build process we also want to verify the provided headers match the library. 
-
-Do do that we have a separate project `dylib_test`, where we extract C doc tests into individual 
+To do that we have a separate project `dylib_test`, where we extract C doc tests into individual 
 `generated_nnn.c` files, produce a `generated.rs` file that knows all C tests, and emits a 
 `#[test]` for each, which we then want to run with `cargo test`.
 
 The `dylib` project should only emit a `cdylib`, and the `dylib_test` should only link against that
-`cdylib`, to make the actual `.dll`, ... works.  
+`cdylib`, to make the actual .dll, ... works.  
 
    
 
@@ -30,10 +28,10 @@ error: linking with `link.exe` failed: exit code: 1181
 ```  
 
 I believe this is because Rust on Windows produces a `dylib.dll` and `dylib.dll.lib` (instead of a `dylib.lib`). When then resolving 
-the library someone Rust apparently isn't aware that to resolve `name="dylib"` it should not only look for `dylib.lib`, 
-but instead also for `dylib.dll.lib`.
+the library Rust apparently isn't aware that to resolve `name="dylib"` it should not only look for the (`dylib.lib`, `dylib.dll`) pair, 
+but instead also for the (`dylib.dll.lib`, `dylib.dll`) pair.
 
-
+Tested with `rustc 1.38.0-nightly (6e310f2ab 2019-07-07)` on `x86_64-pc-windows-msvc`.
 
 
 ### Running cargo test --release
@@ -59,4 +57,5 @@ Interestingly `-ldylib` (which contains `get_version`) is already in that comman
 > Libraries must be listed after the objects that use them (more precisely, a library will be used only if it contains a symbol that satisfies an undefined reference known at the time it is encountered). 
 
 
+Tested with `rustc 1.38.0-nightly (6e310f2ab 2019-07-07)` on `x86_64-unknown-linux-gnu`.
  
