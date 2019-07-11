@@ -1,0 +1,11 @@
+[package]
+name = "dylib"
+version = "0.1.0"
+authors = ["Ralf Biedert <rb@xr.io>"]
+edition = "2018"
+
+
+[lib]
+path = "src/lib.rs"
+crate-type = [ "cdylib" ]
+

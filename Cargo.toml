@@ -1,10 +1,5 @@
-[package]
-name = "rust_issues"
-version = "0.1.0"
-authors = ["Ralf Biedert <rb@xr.io>"]
-edition = "2018"
-
-[dependencies]
-achtung_allocation = { path = "../achtung_allocation" }
-rayon = { path = "../_thirdparty/rayon" }
-crossbeam-queue = { path = "../_thirdparty/crossbeam/crossbeam-queue" }
+[workspace]
+members = [
+    "dylib",
+    "dylib_test"
+]

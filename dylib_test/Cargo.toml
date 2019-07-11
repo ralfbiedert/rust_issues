@@ -1,0 +1,10 @@
+[package]
+name = "dylib_test"
+version = "0.1.0"
+authors = ["Ralf Biedert <rb@xr.io>"]
+edition = "2018"
+build = "src/build.rs"
+
+[build-dependencies]
+dylib = { path = "../dylib" }
+cc = "1.0"
