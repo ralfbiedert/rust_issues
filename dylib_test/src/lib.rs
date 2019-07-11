@@ -1,4 +1,5 @@
 #[link(name = "test_harness")]
+#[allow(dead_code)]
 extern "C" {
     fn test_harness() -> i32;
 }
@@ -16,3 +17,4 @@ fn c_api_tests_work() {
     
     assert_eq!(rval, 0);
 }
+
