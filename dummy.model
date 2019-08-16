@@ -1,0 +1,13 @@
+svm_type c_svc
+kernel_type rbf
+gamma 1
+nr_class 2
+total_sv 2
+rho -0.109665
+label 1 0
+probA -4.83344
+probB 0.590724
+nr_sv 1 1
+SV
+0 0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0
+1 0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0
