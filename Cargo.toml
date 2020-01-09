@@ -4,10 +4,7 @@ version = "0.1.0"
 authors = ["Ralf Biedert <rb@xr.io>"]
 edition = "2018"
 
-[dependencies]
-ffsvm = "^0.8"
-prophet = { git = "https://github.com/ralfbiedert/prophet", rev = "22fdd5649726ccfc0cb09f611cd5ed460bb2ff82" }
-serde = "1.0"
-serde_json = "1.0"
-ndarray = "0.12.1"
 
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
