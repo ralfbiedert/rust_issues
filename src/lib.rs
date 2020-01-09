@@ -1,6 +1,5 @@
 use serde::{Deserialize, Serialize};
 
-#[no_mangle]
 #[repr(C)]
 #[derive(Serialize, Deserialize)]
 pub struct Vec3f32 {
