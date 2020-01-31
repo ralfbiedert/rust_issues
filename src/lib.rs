@@ -1,14 +1,14 @@
-use serde::{Deserialize, Serialize};
-
-#[repr(C)]
-#[derive(Serialize, Deserialize)]
-pub struct Vec3f32 {
-    x: f32,
-    y: f32,
-    z: f32,
+struct S {
+    db: u8,
 }
 
-#[no_mangle]
-pub extern "C" fn f(x: *const Vec3f32) -> f32 {
-    x.x
+fn g() -> Result<S, ()> {
+    let db = new_db();
+    
+ // Ok(S { db: db? })
+    Ok(S { db? })
+}
+
+fn new_db() -> Result<u8, ()> {
+    Ok(0)
 }
