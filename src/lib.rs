@@ -1,6 +1,5 @@
 struct S(u8);
 
-#[test]
-fn ice() {
+pub fn ice() {
     S([][0]);
 }

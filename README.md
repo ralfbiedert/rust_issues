@@ -1,19 +1,19 @@
 
 ```
-> cargo test
+> cargo build
 
    Compiling rust_issues v0.1.0 (D:\Development\Source\rust_issues)
 error: index out of bounds: the len is 0 but the index is 0
- --> src\lib.rs:7:21
+ --> src\lib.rs:4:7
   |
-7 |     assert_eq!(s, S([][0]));
-  |                     ^^^^^
+4 |     S([][0]);
+  |       ^^^^^
   |
   = note: `#[deny(const_err)]` on by default
 
 thread 'rustc' panicked at 'assertion failed: `(left == right)`
   left: `1`,
- right: `0`', src\librustc\mir\interpret\value.rs:305:17
+ right: `0`', src\librustc\mir\interpret\value.rs:319:9
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace.
 
 error: internal compiler error: unexpected panic
@@ -24,7 +24,7 @@ note: we would appreciate a bug report: https://github.com/rust-lang/rust/blob/m
 
 note: rustc 1.41.0-nightly (6d77e45f0 2019-12-04) running on x86_64-pc-windows-msvc
 
-note: compiler flags: -C debuginfo=2 -C incremental
+note: compiler flags: -C debuginfo=2 -C incremental --crate-type lib
 
 note: some of the compiler flags provided by cargo are hidden
 
