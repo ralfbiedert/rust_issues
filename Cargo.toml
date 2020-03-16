@@ -1,6 +1,8 @@
 [package]
 name = "rust_issues"
 version = "0.1.0"
-authors = ["Ralf Biedert <rb@xr.io>"]
 edition = "2018"
+
+[dependencies]
+web-sys = { version = "0.3", features = ["Window", "Document"] }
 

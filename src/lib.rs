@@ -1,5 +1,4 @@
-struct S(u8);
-
-pub fn ice() {
-    S([][0]);
+fn f() {
+    let w = web_sys::window().unwrap();
+    let d = todo!();
 }
